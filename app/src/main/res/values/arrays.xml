@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="theme">
+        <item>淡雅灰</item>
+        <item>少女粉</item>
+        <item>谷歌蓝</item>
+        <item>原谅绿</item>
+        <item>水鸭青</item>
+        <item>姨妈红</item>
+        <item>基佬紫</item>
+    </string-array>
+
+</resources>

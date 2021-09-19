@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="XUITheme.Phone">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+    </style>
+
+    <style name="LaunchTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <!--下面这句如果你加上觉得好看就加，不好看就不加咯-->
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent
+        </item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+    <style name="dialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="color">@color/white</item>
+        <item name="backgroundColor">@color/white</item>
+    </style>
+    <style name="AlerterButton" parent="AlertButton">
+        <item name="backgroundColor">@color/touming</item>
+        <item name="alertBackgroundColor">@color/tou</item>
+    </style>
+
+</resources>

@@ -1,0 +1,39 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.5.30'
+    ext{
+        kotlin_version = '1.5.21'
+            compose_version="1.0.1"
+    }
+    repositories {
+//以下3个maven 非必须
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+
+        maven {url 'https://dl.bintray.com/chaozhouzhang/maven' }
+        maven { url 'https://jitpack.io' }
+
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url "https://jitpack.io" }
+        maven {url 'https://dl.bintray.com/chaozhouzhang/maven' }
+        maven {
+            url "https://repo.eclipse.org/content/repositories/paho-releases/"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,19 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="Wiki页横竖屏浏览设定">
+        <Preference
+            android:title="设置Wiki页横竖屏浏览"
+            android:key="scapes"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="内测|实验性功能">
+        <Preference
+            android:key="aboutTest"
+            android:title="关于内测"/>
+        <Preference
+            android:title="Maser 测试版本体验"
+            android:summary="体验一下JetPack Compose组件的强大吧！"
+            android:key="backupTr"/>
+    </PreferenceCategory>
+</PreferenceScreen>

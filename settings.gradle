@@ -1,0 +1,4 @@
+include ':app'
+setBinding(new Binding([gradle: this]))
+include ':vpnLib'
+rootProject.name='域'

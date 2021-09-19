@@ -1,0 +1,184 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+apply plugin: 'kotlin-android'
+android {
+    signingConfigs {
+        config {
+            enableV3Signing true
+            enableV4Signing true
+        }
+        release {
+            storeFile file('D:\\yu.jks')
+            storePassword 'Qinsansui233...'
+            keyAlias 'wusui'
+            keyPassword 'Qinsansui233...'
+        }
+    }
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 31
+        versionCode 912
+        //应用版本
+        versionName "3.9.12（o´・ェ・｀o）|中秋"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+            sourceSets {
+                main {
+                    jni.srcDirs = [] //禁用gradle编译jni
+                    jniLibs.srcDirs = ['libs'] // libs为so文件所在包路径
+                }
+            }
+        }
+//        externalNativeBuild {
+//            cmake {
+//                // Passes optional arguments to CMake.
+//                arguments "-DANDROID_ARM_NEON=TRUE", "-DANDROID_TOOLCHAIN=clang"
+//                // Sets optional flags for the C compiler.
+//                //生成.so库的目标平台
+//                abiFilters 'armeabi-v7a',
+//                        'arm64-v8a'
+//            }
+//        }
+    }
+//    externalNativeBuild {
+//        cmake {
+//            path "E:\\yu\\lib_openvpn\\src\\main\\cpp\\CMakeLists.txt"
+//        }
+//    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            signingConfig signingConfigs.release
+            zipAlignEnabled true     //Zipalign优化
+            shrinkResources true    // 移除无用的resource文件
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            zipAlignEnabled false//Zipalign优化
+            shrinkResources false// 移除无用的resource文件
+
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            debuggable false
+//            jniDebuggable false
+//            renderscriptDebuggable false
+//            signingConfig signingConfigs.release
+//            zipAlignEnabled true     //Zipalign优化
+//            shrinkResources true    // 移除无用的resource文件
+        }
+
+    }
+    buildFeatures {
+        // Enables Jetpack Compose for this module
+        viewBinding true
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.0.1"
+    }
+    kotlinOptions {
+        useIR = true
+        jvmTarget = '1.8'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+//    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+//    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation 'androidx.core:core-ktx:1.6.0'
+//    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+//    implementation 'com.squareup.okio:okio:2.6.0'
+//    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.blankj:utilcodex:1.30.6'
+    // Glide image loader
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    implementation 'androidx.test:core-ktx:1.4.0'
+    implementation project(path: ':vpnLib')
+//    implementation files('libs/MiPush_SDK_Client_4_8_0.jar')
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation 'com.github.xuexiangjys:XUI:1.1.6'
+    implementation 'com.github.tapadoo:alerter:7.2.1'
+    implementation 'com.github.goweii:ActionBarEx:3.2.2'
+    implementation 'com.solid.skin:skinlibrary:2.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation 'com.google.android.material:material:1.4.0'
+//    implementation 'com.gauravk.bubblenavigation:bubblenavigation:1.0.7'
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+//    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    def lifecycle_version = "2.4.0-alpha03"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
+    implementation("androidx.compose.runtime:runtime-livedata:1.1.0-alpha01")
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    // Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+    // Annotation processor
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation "androidx.compose.ui:ui-tooling:1.1.0-alpha02"
+    implementation "androidx.compose.runtime:runtime:1.1.0-alpha02"
+    implementation "androidx.compose.material:material:1.1.0-alpha02"
+    implementation "androidx.compose.foundation:foundation:1.1.0-alpha02"
+    implementation "androidx.compose.animation:animation:1.1.0-alpha02"
+    implementation 'androidx.activity:activity-compose:1.3.1'
+    implementation "androidx.fragment:fragment-ktx:1.3.6"
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    //换肤框架
+    implementation 'com.github.john990:WaveView:v0.9'
+//图表
+//    implementation 'com.diogobernardino:williamchart:3.10.1'
+    //引导
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.13.3'
+//PagerView And Glide
+    implementation 'com.google.accompanist:accompanist-pager:0.18.0'
+    implementation 'io.coil-kt:coil-compose:1.3.2'
+    //systemuicontroller
+    implementation 'com.google.accompanist:accompanist-systemuicontroller:0.18.0'
+    implementation "androidx.navigation:navigation-compose:2.4.0-alpha07"
+    implementation "androidx.core:core-ktx:1.6.0"
+
+}
+repositories {
+    mavenCentral()
+}
+
+
